@@ -27,7 +27,7 @@ class Sidebar extends Component {
     render() {
         const routes = [
             {
-                path: '/login', 
+                path: '/', 
                 main:()=> <div className="LoginDisplays">
                     <h2>Login</h2>
                     <Login/>

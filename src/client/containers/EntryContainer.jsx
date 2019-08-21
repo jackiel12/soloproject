@@ -23,7 +23,7 @@ class Entry extends Component {
     } 
     handleSubmit(event) {
       //should interact with backend here and on submit, should update the database (entry)
-      console.log('submit', this.state)
+      console.log('hello', this.props.createEntry)
       this.props.createEntry(this.state);
     }
     

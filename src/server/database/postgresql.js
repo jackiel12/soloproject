@@ -14,7 +14,6 @@ pool.connect()
 
   //refer to pg docs on structure: exporting query recommended
 module.exports = {
-  query: (text, params) => {
-    pool.query(text, params)
-  }
+  query: (text, params) =>  pool.query(text, params)
+  
 }
