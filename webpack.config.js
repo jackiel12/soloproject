@@ -1,6 +1,6 @@
 const path = require ('path');
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: path.join(__dirname, 'src', 'client', 'index.js'),
     resolve: {extensions: ['.jsx', '.js']},
     module: {
@@ -26,6 +26,7 @@ module.exports = {
     filename: "bundle.js", 
     },
     devServer: {
-      contentBase: 'dist'
+      publicPath: '/dist/',
+      proxy: {'/api': 'http://localhost:3000'}
     }
   };

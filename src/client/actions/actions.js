@@ -2,7 +2,7 @@ import * as types from './actionTypes.js'
 
 export const createUser = (username) => {
     return (dispatch) => {
-        fetch('/post', {
+        fetch('/loggedin', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify({username})
@@ -39,14 +39,15 @@ export const changeMood = (mood) => ({
 
 export const createEntry = (text) => {
     return (dispatch) => {
-        fetch('/post', {
+        console.log('fetching')
+        fetch('/api/database', {
             method: 'POST', 
             headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify({text})
         })
         .then(data => {
             console.log(data)
-            dispatch({type: types.CREATE_ENTRY, payload: data}, data)
+            dispatch({type: types.CREATE_ENTRY, payload: text})
         })
         .catch(err => console.log(err))
     }

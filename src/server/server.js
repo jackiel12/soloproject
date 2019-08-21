@@ -13,10 +13,15 @@ app.use('/', express.static(path.join(__dirname, '..', '..','dist')))
 app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, '..', '..','dist', 'index.html'));
 })
-app.post('')
-app.post('/post', (req, res) => {
-    const {body} = req.body;
-    // db.query('INSERT INTO entrytable (entry) VALUES (req.body.text)
+
+// app.get('/api/database', (req, res) => {
+//     res.sendFile(path.join(__dirname, './database/postgres.js'))
+// })
+app.post('/api/database', (req, res) => {
+    console.log('posting')
+    const {text} = req.body;
+    db.query('INSERT INTO entrytable (entry) VALUES ($1)', [text])
+        .then (data => console.log(data))
 })
 
 

@@ -45,9 +45,9 @@ const moodReducer = (state=initialState, action) => {
           color
           }
           case types.CREATE_ENTRY: 
-
+          console.log('creating entry dispatched')
           return {
-
+          ...state
           }
         default:
           return state;
