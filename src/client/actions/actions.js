@@ -1,31 +1,16 @@
 import * as types from './actionTypes.js'
 
-export const createUser = (username) => {
+export const createUser = (credentials) => {
+    console.log('creating user')
     return (dispatch) => {
         fetch('/api/createuser', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'}, 
-            body: JSON.stringify({username})
+            body: JSON.stringify({credentials})
         })
         .then (data => {
             console.log(data)
-            dispatch({type: types.CREATE_USER, payload: username})
-        })
-        .catch(err => console.log(err))
-        //or if my data was not posted/shoudl i catch it with redirect to create login again?
-    }    
-}
-
-export const createPW = (password) => {
-    return (dispatch) => {
-        fetch('/api/createpw', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'}, 
-            body: JSON.stringify({password})
-        })
-        .then (data => {
-            console.log(data)
-            dispatch({type: types.CREATE_PW, payload: password})
+            dispatch({type: types.CREATE_USER, payload: credentials})
         })
         .catch(err => console.log(err))
         //or if my data was not posted/shoudl i catch it with redirect to create login again?

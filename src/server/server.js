@@ -21,6 +21,15 @@ app.get('/', (req, res) => {
 
 //proxy reqs;
 
+app.post('/api/createuser', (req, res) => {
+    console.log('posting', req.body);
+    const {username, password} = req.body.credentials;
+    db.query('INSERT INTO usertable (username, password) VALUES ($1, $2)', [username, password])
+        .then (data => console.log(data))
+        .catch(err => console.log(err))
+    res.send('queried up')
+})
+
 //login post req;
 // app.post ('/api/loggedin', (req, res) => {
 //     console.log('logging in');

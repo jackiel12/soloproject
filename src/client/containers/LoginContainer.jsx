@@ -14,8 +14,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => ({
     //write access
     // create functions that will dispatch action creators
-        isLoggedIn: (username) => dispatch(actions.isLoggedIn(username)),
-        createUser: (username) => dispatch(actions.createUser(username))
+        isLoggedIn: (credentials) => dispatch(actions.isLoggedIn(credentials)),
+        createUser: (credentials) => dispatch(actions.createUser(credentials))
 
 });
 
