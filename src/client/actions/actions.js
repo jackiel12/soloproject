@@ -18,7 +18,7 @@ export const createUser = (username) => {
 
 export const isLoggedIn = (username) => {
     return (dispatch) => {
-        fetch('/post', {
+        fetch('/home', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify({username})

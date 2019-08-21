@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import * as actions from '../actions/actions'
 import { connect } from 'react-redux';
 
+
+const mapStateToProps = state => {
+  //read access
+  // provide pertinent state here
+  const {isLoggedIn, user} = state.mood;
+  console.log('store from login', {isLoggedIn, user})
+  return{isLoggedIn, user};
+}
+
 const mapDispatchToProps = (dispatch) => ({
     //write access
     // create functions that will dispatch action creators
@@ -29,6 +38,7 @@ class Login extends Component {
       //should interact with backend here and on submit, should update the database (entry)
       console.log('logged in', this.state)
       this.props.isLoggedIn(this.state);
+      
     }
     handleCreate(event) {
       //should interact with backend here and on submit, should update the database (entry)
@@ -36,7 +46,7 @@ class Login extends Component {
       this.props.createUser(this.state);
     }
     render() {
-        return (
+      return (
             <div className="Login">
                 <div>
                     <label for="username">Username:</label>
@@ -53,4 +63,4 @@ class Login extends Component {
         )
     }
 }
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

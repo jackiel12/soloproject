@@ -13,7 +13,7 @@ app.use('/', express.static(path.join(__dirname, '..', '..','dist')))
 app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, '..', '..','dist', 'index.html'));
 })
-
+app.post('')
 app.post('/post', (req, res) => {
     const {body} = req.body;
     // db.query('INSERT INTO entrytable (entry) VALUES (req.body.text)
