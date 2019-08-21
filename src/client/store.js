@@ -9,8 +9,7 @@ const store = createStore(
     //we can opt to include a preload/initla state param but we've included it in our reducer fx (that is already passed in ^)
     reducers,
     //import middleware to store 
-    composeWithDevTools(),
-    applyMiddleware(thunk)
+    composeWithDevTools(applyMiddleware(thunk)),
 );
 
 export default store;
