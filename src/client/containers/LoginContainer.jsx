@@ -23,17 +23,25 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          value: ''
+          username: '', 
+          password: ''
         }
-        this.handleChange= this.handleChange.bind(this);
+        this.handleUsername= this.handleUsername.bind(this);
+        this.handlePassword = this.handlePassword.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
 
     }
-    handleChange(event) {
+    handleUsername(event) {
       console.log('change', this.state)
-      this.setState({value: event.target.value});
+      this.setState({username: event.target.value});
     } 
+
+    handlePassword(event) {
+      console.log('change', this.state)
+      this.setState({password: event.target.value});
+    } 
+
     handleLogin(event) {
       //should interact with backend here and on submit, should update the database (entry)
       console.log('logged in', this.state)
@@ -50,12 +58,12 @@ class Login extends Component {
             <div className="Login">
                 <div>
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" value={this.state.value} onChange={this.handleChange}/>
+                    <input type="text" id="username" name="username" value={this.state.username} onChange={this.handleUsername}/>
                 </div>
 
               <div>
               <label for="pass">Password:</label>
-              <input type="password" id="pass" name="password"/>
+              <input type="password" id="pass" name="password" value={this.state.password} onChange={this.handlePassword}/>
               </div>
               <button onClick={this.handleLogin}>Login</button>
               <button onClick={this.handleCreate}>Create</button>

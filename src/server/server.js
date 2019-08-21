@@ -22,6 +22,11 @@ app.get('/', (req, res) => {
 //proxy reqs;
 
 //login post req;
+// app.post ('/api/loggedin', (req, res) => {
+//     console.log('logging in');
+//     const {username} = req.body;
+// })
+
 
 app.post('/api/database', (req, res) => {
     console.log('posting');
