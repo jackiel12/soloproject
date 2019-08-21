@@ -8,9 +8,10 @@ import MoodContainer from './MoodContainer';
 const mapStateToProps = state => {
     //read access
     // provide pertinent state here
+    console.log(state)
     const {color} = state.mood;
     return {color};
-  }
+}
 
 class MainContainer extends Component {
     //should interact with the backend to pull from json file/api to generate random motivational quotes

@@ -24,7 +24,7 @@ class Mood extends Component {
     }
     //should trigger an action to dispatch reducer for state change
     render() {
-      console.log(this.props.color)
+      console.log(this.props)
         //should return a div with buttons (mood faces that should change the state)
         const moods = ['happy', 'sad', 'alert', 'mad', 'stressed'];
         const renderedMoods = moods.map((mood, index) => {

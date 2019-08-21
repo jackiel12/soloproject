@@ -3,7 +3,10 @@ const path = require('path');
 const app = express();
 const db = require('./database/postgresql');
 
+//same as bodyParser, without bloating file/dling npm:
 app.use(express.json());
+//serve static files
+
 app.use('/', express.static(path.join(__dirname, '..', '..','dist')))
 
 
