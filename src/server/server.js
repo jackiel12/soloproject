@@ -52,11 +52,11 @@ app.post('/api/database', (req, res) => {
   const {
     text, date, username, color,
   } = req.body;
-  console.log('past here');
-  db.query('INSERT INTO entrytable (entry, mood, created, username), VALUES ($1, $2, $3, $4)', [text, color, date, username])
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-  res.send('queried up');
+  console.log(req.body);
+//   db.query('INSERT INTO entrytable (entry, mood, created, username), VALUES ($1, $2, $3, $4)', [text, color, date, username])
+//     .then((data) => console.log('data here', data))
+//     .catch((err) => console.log('theres an error', err));
+//   res.send('queried up');
 });
 
 // app.all('*', (req, res) => {

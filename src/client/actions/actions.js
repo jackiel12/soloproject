@@ -18,7 +18,7 @@ export const createUser = (credentials) => {
 
 
 export const isLoggedIn = (credentials) => (dispatch) => {
-  console.log('logging in');
+  console.log('logging in action:', credentials);
   fetch('/api/loggedin', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -37,21 +37,21 @@ export const changeMood = (mood) => ({
 });
 
 export const createEntry = (state, username, color) => (dispatch) => {
-  console.log('fetching');
-  fetch('/api/database', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      text: state.text, date: state.date, username, color,
-    }),
-  })
-    .then(() => {
-      dispatch({
-        type: types.CREATE_ENTRY,
-        payload: {
-          text: state.text, date: state.date, username, color,
-        },
-      });
-    })
-    .catch((err) => console.log(err));
+  console.log('action creator that dispatches-', 'state:', state);
+//   fetch('/api/database', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       text: state.text, date: state.date, username, color,
+//     }),
+//   })
+//     .then(() => {
+//       dispatch({
+//         type: types.CREATE_ENTRY,
+//         payload: {
+//           text: state.text, date: state.date, username, color,
+//         },
+//       });
+//     })
+//     .catch((err) => console.log(err));
 };

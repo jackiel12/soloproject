@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
 
+const mapStateToProps = (state) => {
+  const { username, color } = state.mood;
+  return { username, color };
+};
+
 // entry container should be a large input that onchange should update database on backend (fetch to backend?)
 const mapDispatchToProps = (dispatch) => ({
   // write access
@@ -10,10 +15,6 @@ const mapDispatchToProps = (dispatch) => ({
   createEntry: (text) => dispatch(actions.createEntry(text)),
 });
 
-const mapStateToProps = (state) => {
-  const { username, color } = state;
-  return { username, color };
-};
 
 class Entry extends Component {
   constructor(props) {
@@ -24,15 +25,16 @@ class Entry extends Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({ value: event.target.value, username: this.props.username, color: this.props.color });
   }
 
   handleSubmit(event) {
     // should interact with backend here and on submit, should update the database (entry)
-    this.props.createEntry(this.state, this.props.username, this.props.color);
+    this.props.createEntry(this.state);
   }
 
   render() {
+    // console.log('entry container-', 'state', this.state);
     return (
       <div>
         <label>
@@ -46,4 +48,4 @@ class Entry extends Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Entry);
+export default connect(mapStateToProps, mapDispatchToProps)(Entry);

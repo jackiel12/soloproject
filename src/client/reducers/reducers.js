@@ -43,6 +43,8 @@ const moodReducer = (state = initialState, action) => {
     case types.CREATE_ENTRY:
       return {
         ...state,
+        username: action.payload.username,
+        color: action.payload.color,
       };
     default:
       return state;
