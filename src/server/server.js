@@ -53,10 +53,12 @@ app.post('/api/database', (req, res) => {
     // eslint-disable-next-line comma-dangle
     entry, date, username, color
   } = req.body;
-  db.query('INSERT INTO entrytable (entry, mood, created, username) VALUES ($1, $2, $3, $4)', [entry, color, date, username])
-    .then((data) => console.log('data here', data))
+  db.query('INSERT INTO entrytable (entry, mood, created, username) VALUES ($1, $2, $3, $4) RETURNING entry, created', [entry, color, date, username])
+    .then((data) => {
+      console.log('data after posting here:', data.rows[0]);
+      res.json(data.rows[0]);
+    })
     .catch((err) => console.log('theres an error', err));
-  res.send('queried up');
 });
 
 // app.all('*', (req, res) => {

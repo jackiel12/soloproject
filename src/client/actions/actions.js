@@ -36,7 +36,7 @@ export const changeMood = (mood) => ({
   payload: mood,
 });
 
-export const createEntry = (state, username, color) => (dispatch) => {
+export const createEntry = (state) => (dispatch) => {
   console.log('action creator that dispatches-', 'state:', state);
   fetch('/api/database', {
     method: 'POST',
@@ -45,13 +45,12 @@ export const createEntry = (state, username, color) => (dispatch) => {
       entry: state.value, date: state.date, username: state.username, color: state.color,
     }),
   })
+    .then((response) => response.json())
     .then((data) => {
-      console.log('came back:', data);
+      console.log('ACTION DATA AFTER FETCH/POSTED:', data);
       dispatch({
         type: types.CREATE_ENTRY,
-        payload: {
-          data,
-        },
+        payload: { data },
       });
     })
     .catch((err) => console.log(err));

@@ -42,7 +42,6 @@ class Entry extends Component {
           <textarea value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" onClick={this.handleSubmit} />
-        {/* should submit into database here */}
       </div>
     );
   }

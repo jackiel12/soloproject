@@ -7,6 +7,8 @@ const initialState = {
   isLoggedIn: false,
   mood: null,
   color: 'grey',
+  insertedData: null,
+  weeklyData: null,
 };
 
 const colorize = {
@@ -43,6 +45,7 @@ const moodReducer = (state = initialState, action) => {
         ...state,
         username: action.payload.username,
         color: action.payload.color,
+        insertedData: action.payload,
       };
     default:
       return state;
