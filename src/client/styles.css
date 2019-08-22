@@ -9,3 +9,7 @@
     justify-content: center;
     /* align-content: baseline; */
 }
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

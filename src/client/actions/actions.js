@@ -65,8 +65,8 @@ export const showWeek = (username) => (dispatch) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      const newData = data.map((obj) => obj.entry);
-      console.log(newData);
+      const newData = data.map((obj) => Object.values(obj));
+      console.log('new data', newData);
       dispatch({
         type: types.SHOW_WEEK,
         payload: { newData },

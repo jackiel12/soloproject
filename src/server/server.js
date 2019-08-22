@@ -70,9 +70,9 @@ app.post('/api/weekly', (req, res) => {
   const year = dateObj.getUTCFullYear();
   const newdate = `'${year}-0${month}-${day}'`;
 
-  db.query('SELECT entry FROM entrytable WHERE created > CURRENT_DATE - 7 ')
+  db.query('SELECT entry, mood FROM entrytable WHERE created > CURRENT_DATE - 7 ')
     .then((data) => {
-    //   console.log('found data', data.rows);
+      console.log('found data', data.rows);
       res.json(data.rows);
     })
     .catch((err) => console.log('theres an error', err));

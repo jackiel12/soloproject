@@ -30,10 +30,8 @@ class Weekly extends Component {
 
   render() {
     console.log('weeklyData:', this.props.weeklyData);
-    const weeklyPosts = this.props.weeklyData ? this.props.weeklyData.map((post, index) => (
-      <div className="weeklyPost">
-        <div className="post" key={index}>{post}</div>
-      </div>
+    const weeklyPosts = this.props.weeklyData ? this.props.weeklyData.map((post) => (
+      <div className="post" key={post} style={{ backgroundColor: post[1] }}>{post[0]}</div>
     )) : <h4>Loading...</h4>;
     return (
       <div className="WeeklyPosts">

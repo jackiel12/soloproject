@@ -48,8 +48,9 @@ const moodReducer = (state = initialState, action) => {
         insertedData: action.payload,
       };
     case types.SHOW_WEEK:
-      console.log('actionpayload', action.payload);
+      // console.log('actionpayload', action.payload);
       const { newData } = action.payload;
+
       return {
         ...state,
         weeklyData: newData,
