@@ -34,7 +34,7 @@ class Entry extends Component {
   }
 
   render() {
-    console.log('entry container-', 'state', this.state);
+    // console.log('entry container-', 'state', this.state);
     return (
       <div>
         <label>

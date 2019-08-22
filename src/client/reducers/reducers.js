@@ -9,8 +9,6 @@ const initialState = {
   color: 'grey',
 };
 
-// const moods = ['happy', 'sad', 'alert', 'mad', 'stressed'];
-
 const colorize = {
   happy: 'yellow',
   sad: 'blue',
@@ -38,7 +36,7 @@ const moodReducer = (state = initialState, action) => {
       return {
         ...state,
         mood: action.payload,
-        color: colorize[action] || 'grey',
+        color: colorize[action.payload] || 'grey',
       };
     case types.CREATE_ENTRY:
       return {

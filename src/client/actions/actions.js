@@ -46,7 +46,7 @@ export const createEntry = (state, username, color) => (dispatch) => {
     }),
   })
     .then((data) => {
-      console.log(data);
+      console.log('came back:', data);
       dispatch({
         type: types.CREATE_ENTRY,
         payload: {

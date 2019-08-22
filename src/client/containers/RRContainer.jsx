@@ -18,8 +18,8 @@ import Login from './LoginContainer';
 const mapStateToProps = (state) => {
   // read access
   // provide pertinent state here
-  const { isLoggedIn } = state.mood;
-  return { isLoggedIn };
+  const { isLoggedIn, color } = state.mood;
+  return { isLoggedIn, color };
 };
 
 class Sidebar extends Component {

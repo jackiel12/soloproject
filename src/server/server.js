@@ -48,12 +48,11 @@ app.post('/api/loggedin', (req, res) => {
 });
 
 app.post('/api/database', (req, res) => {
-  console.log('posting entry-', 'REQ:', req.body.entry);
+  console.log('posting entry-');
   const {
     // eslint-disable-next-line comma-dangle
     entry, date, username, color
   } = req.body;
-  console.log('dbquery error coming up?:');
   db.query('INSERT INTO entrytable (entry, mood, created, username) VALUES ($1, $2, $3, $4)', [entry, color, date, username])
     .then((data) => console.log('data here', data))
     .catch((err) => console.log('theres an error', err));
