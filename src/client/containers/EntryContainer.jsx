@@ -4,8 +4,8 @@ import * as actions from '../actions/actions';
 
 
 const mapStateToProps = (state) => {
-  const { username, color } = state.mood;
-  return { username, color };
+  const { username, color, insertedData } = state.mood;
+  return { username, color, insertedData };
 };
 
 // entry container should be a large input that onchange should update database on backend (fetch to backend?)

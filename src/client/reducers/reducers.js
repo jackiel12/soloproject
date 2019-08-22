@@ -47,6 +47,13 @@ const moodReducer = (state = initialState, action) => {
         color: action.payload.color,
         insertedData: action.payload,
       };
+    case types.SHOW_WEEK:
+      console.log('actionpayload', action.payload);
+      const { newData } = action.payload;
+      return {
+        ...state,
+        weeklyData: newData,
+      };
     default:
       return state;
   }

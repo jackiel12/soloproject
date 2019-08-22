@@ -55,3 +55,22 @@ export const createEntry = (state) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const showWeek = (username) => (dispatch) => {
+  console.log('fetching weekly here-');
+  fetch('/api/weekly', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const newData = data.map((obj) => obj.entry);
+      console.log(newData);
+      dispatch({
+        type: types.SHOW_WEEK,
+        payload: { newData },
+      });
+    })
+    .catch((err) => console.log(err));
+};

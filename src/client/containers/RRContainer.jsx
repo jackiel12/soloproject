@@ -10,6 +10,7 @@ import * as actions from '../actions/actions';
 import Mantra from './MantraContainer';
 import Entry from './EntryContainer';
 import Login from './LoginContainer';
+import Weekly from './WeeklyContainer';
 
 
 // react router container should render side bar that renders its own component from  main
@@ -18,8 +19,8 @@ import Login from './LoginContainer';
 const mapStateToProps = (state) => {
   // read access
   // provide pertinent state here
-  const { isLoggedIn, color } = state.mood;
-  return { isLoggedIn, color };
+  const { isLoggedIn, color, insertedData } = state.mood;
+  return { isLoggedIn, color, insertedData };
 };
 
 class Sidebar extends Component {
@@ -68,7 +69,12 @@ class Sidebar extends Component {
       },
       {
         path: '/weeklyposts',
-        main: () => (this.props.isLoggedIn ? (<h2>Weekly</h2>) : (
+        main: () => (this.props.isLoggedIn ? (
+          <div>
+            <h2>Weekly</h2>
+            <Weekly />
+          </div>
+        ) : (
           <div className="LoginDisplays">
             <h2>Not Logged In! Login here:</h2>
             <Login />

@@ -61,6 +61,23 @@ app.post('/api/database', (req, res) => {
     .catch((err) => console.log('theres an error', err));
 });
 
+app.post('/api/weekly', (req, res) => {
+  console.log('getting weekly-');
+  const { username } = req.body;
+  const dateObj = new Date();
+  const month = dateObj.getUTCMonth() + 1; // months from 1-12
+  const day = dateObj.getUTCDate();
+  const year = dateObj.getUTCFullYear();
+  const newdate = `'${year}-0${month}-${day}'`;
+
+  db.query('SELECT entry FROM entrytable WHERE created > CURRENT_DATE - 7 ')
+    .then((data) => {
+    //   console.log('found data', data.rows);
+      res.json(data.rows);
+    })
+    .catch((err) => console.log('theres an error', err));
+});
+
 // app.all('*', (req, res) => {
 //     console.log('does it come')
 //     res.status(200).sendFile(path.join(__dirname, '..', '..','dist', 'index.html'));

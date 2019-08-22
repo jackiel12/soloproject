@@ -9,12 +9,3 @@
     justify-content: center;
     /* align-content: baseline; */
 }
-
-
-.MantraBox {
-    width: 300px;
-    background-color: black;
-    border: 15px black;
-    padding: 50px;
-    margin: 20px;
-}
