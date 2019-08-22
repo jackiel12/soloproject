@@ -33,6 +33,10 @@ class Entry extends Component {
     this.props.createEntry(this.state);
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     // console.log('entry container-', 'state', this.state);
     return (

@@ -31,7 +31,7 @@ class Sidebar extends Component {
   render() {
     const routes = [
       {
-        path: '/login',
+        path: '/',
         main: () => (this.props.isLoggedIn ? <Redirect to="/home" /> : (
           <div className="LoginDisplays">
             <h2>Login</h2>
@@ -88,7 +88,7 @@ class Sidebar extends Component {
         <div className="SideMenu">
           <div>
             <ul>
-              <li><Link to="/login">Login</Link></li>
+              <li><Link to="/">Login</Link></li>
               <li><Link to="/home">Home</Link></li>
               <li><Link to="/newEntry">Journal</Link></li>
               <li><Link to="/weeklyposts">Weekly</Link></li>
@@ -96,7 +96,7 @@ class Sidebar extends Component {
 
           </div>
           {
-                 routes.map((route, index) => <Route key={index} path={route.path} component={route.main} />)
+                 routes.map((route, index) => <Route key={index} exact path={route.path} component={route.main} />)
                     }
         </div>
       </Router>

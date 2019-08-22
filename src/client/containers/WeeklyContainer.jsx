@@ -15,9 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
   // read access
   // provide pertinent state here
   showWeek: (username) => dispatch(actions.showWeek(username)),
-
+  handleDelete: (info) => dispatch(actions.handleDelete(info)),
 });
-
 
 class Weekly extends Component {
   constructor(props) {
@@ -28,14 +27,30 @@ class Weekly extends Component {
     this.props.showWeek(this.props.username);
   }
 
+  //   handleChange(event) {
+  //     this.setState({ value: event.target.value });
+  //   }
+
+  //   handleEdit(event) {
+  //     // should interact with backend here and on submit, should update the database (entry)
+  //     this.props.createEntry(this.state);
+  //   }
+
+  handleDelete(info) {
+    // should interact with backend here and on submit, should update the database (entry)
+    this.props.handleDelete(info, this.props.username);
+  }
+
   render() {
-    console.log('weeklyData:', this.props.weeklyData);
-    const weeklyPosts = this.props.weeklyData ? this.props.weeklyData.map((post) => (
-      <div className="post" key={post} style={{ backgroundColor: post[1] }}>{post[0]}</div>
+    const weeklyPosts = this.props.weeklyData ? this.props.weeklyData.map((post, index) => (
+      <div className="post" key={post} index={index} style={{ backgroundColor: post[1] }}>
+        {post[0]}
+        {/* <button type="button" onClick={this.handleEdit}>edit</button> */}
+        <button type="button" onClick={() => this.handleDelete(post)}>delete</button>
+      </div>
     )) : <h4>Loading...</h4>;
     return (
       <div className="WeeklyPosts">
-        {/* <h2>working on:</h2> */}
         {weeklyPosts}
       </div>
     );

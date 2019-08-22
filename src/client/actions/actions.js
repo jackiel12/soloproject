@@ -74,3 +74,31 @@ export const showWeek = (username) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const handleDelete = (info, username) => (dispatch) => {
+  console.log('info in handleDelete: ', info);
+  fetch('/api/delete', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ info }),
+  })
+    .then((response) => response.json())
+    .then(() => {
+      // can call two fetches;
+      fetch('/api/weekly', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username }),
+      })
+        .then((response) => response.json())
+        .then((delData) => {
+          const newData = delData.map((obj) => Object.values(obj));
+          console.log('new data', newData);
+          dispatch({
+            type: types.SHOW_WEEK,
+            payload: { newData },
+          });
+        });
+    })
+    .catch((err) => console.log(err));
+};

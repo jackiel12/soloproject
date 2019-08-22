@@ -55,7 +55,7 @@ app.post('/api/database', (req, res) => {
   } = req.body;
   db.query('INSERT INTO entrytable (entry, mood, created, username) VALUES ($1, $2, $3, $4) RETURNING entry, created', [entry, color, date, username])
     .then((data) => {
-      console.log('data after posting here:', data.rows[0]);
+    //   console.log('data after posting here:', data.rows[0]);
       res.json(data.rows[0]);
     })
     .catch((err) => console.log('theres an error', err));
@@ -72,10 +72,22 @@ app.post('/api/weekly', (req, res) => {
 
   db.query('SELECT entry, mood FROM entrytable WHERE created > CURRENT_DATE - 7 ')
     .then((data) => {
-      console.log('found data', data.rows);
+    //   console.log('found data', data.rows);
       res.json(data.rows);
     })
     .catch((err) => console.log('theres an error', err));
+});
+
+app.delete('/api/delete', (req, res) => {
+  const { info } = req.body;
+  console.log('deleteing...', info[0]);
+  //   console.log('DELETE FROM entrytable WHERE entry= $1');
+  db.query('DELETE FROM entrytable WHERE entry = $1', [info[0]])
+    .then((data) => {
+      console.log('data to delete:', data.rows);
+      res.json(data.rows);
+    })
+    .catch((err) => console.log('err'));
 });
 
 // app.all('*', (req, res) => {
