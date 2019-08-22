@@ -1,4 +1,5 @@
-const { Pool } = require('pg')
+const { Pool } = require('pg');
+
 const pool = new Pool({
   user: 'courtneyk',
   host: 'localhost',
@@ -7,13 +8,13 @@ const pool = new Pool({
   port: 5432,
 });
 
-//connects to db, which (as shown above) is always running on another port;
+// connects to db, which (as shown above) is always running on another port;
 pool.connect()
-  .then(data => console.log('connected!'))
-  .catch (err => console.log(err))
+  .then((data) => console.log('connected!'))
+  .catch((err) => console.log(err));
 
-  //refer to pg docs on structure: exporting query recommended
+// refer to pg docs on structure: exporting query recommended
 module.exports = {
-  query: (text, params) =>  pool.query(text, params)
-  
-}
+  query: (text, params) => pool.query(text, params),
+
+};

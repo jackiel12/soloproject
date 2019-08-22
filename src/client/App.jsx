@@ -11,6 +11,7 @@ render() {
     return (
     //keep in mind that you must wrap your main divs inside a provider div (imported in) and to pass down store
         <Provider store={store} style={{backgroundColor: 'green'}}>
+            {/* <h1>checking</h1> */}
             <Main/>
         </Provider>
     )
