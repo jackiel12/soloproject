@@ -48,15 +48,16 @@ app.post('/api/loggedin', (req, res) => {
 });
 
 app.post('/api/database', (req, res) => {
-  console.log('posting entry');
+  console.log('posting entry-', 'REQ:', req.body.entry);
   const {
-    text, date, username, color,
+    // eslint-disable-next-line comma-dangle
+    entry, date, username, color
   } = req.body;
-  console.log(req.body);
-//   db.query('INSERT INTO entrytable (entry, mood, created, username), VALUES ($1, $2, $3, $4)', [text, color, date, username])
-//     .then((data) => console.log('data here', data))
-//     .catch((err) => console.log('theres an error', err));
-//   res.send('queried up');
+  console.log('dbquery error coming up?:');
+  db.query('INSERT INTO entrytable (entry, mood, created, username) VALUES ($1, $2, $3, $4)', [entry, color, date, username])
+    .then((data) => console.log('data here', data))
+    .catch((err) => console.log('theres an error', err));
+  res.send('queried up');
 });
 
 // app.all('*', (req, res) => {

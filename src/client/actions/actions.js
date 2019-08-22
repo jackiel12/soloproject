@@ -38,20 +38,21 @@ export const changeMood = (mood) => ({
 
 export const createEntry = (state, username, color) => (dispatch) => {
   console.log('action creator that dispatches-', 'state:', state);
-//   fetch('/api/database', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       text: state.text, date: state.date, username, color,
-//     }),
-//   })
-//     .then(() => {
-//       dispatch({
-//         type: types.CREATE_ENTRY,
-//         payload: {
-//           text: state.text, date: state.date, username, color,
-//         },
-//       });
-//     })
-//     .catch((err) => console.log(err));
+  fetch('/api/database', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      entry: state.value, date: state.date, username: state.username, color: state.color,
+    }),
+  })
+    .then((data) => {
+      console.log(data);
+      dispatch({
+        type: types.CREATE_ENTRY,
+        payload: {
+          data,
+        },
+      });
+    })
+    .catch((err) => console.log(err));
 };

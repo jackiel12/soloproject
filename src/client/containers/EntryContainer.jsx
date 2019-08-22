@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 class Entry extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '', date: new Date().toString() };
+    this.state = { value: '', date: (new Date().toString()).slice(4, 15) };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -34,7 +34,7 @@ class Entry extends Component {
   }
 
   render() {
-    // console.log('entry container-', 'state', this.state);
+    console.log('entry container-', 'state', this.state);
     return (
       <div>
         <label>
